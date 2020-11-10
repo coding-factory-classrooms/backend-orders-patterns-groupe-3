@@ -12,7 +12,7 @@ public class App {
         initialize();
 
         Spark.get("/", (req, res) -> {
-            return Template.render("home.html", new HashMap<>());
+            return Template.render("clientBasket.html", new HashMap<>());
         });
     }
 

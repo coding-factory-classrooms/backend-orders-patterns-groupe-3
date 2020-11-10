@@ -1,0 +1,66 @@
+#parse("base.html")
+#@mainLayout()
+<h1>Commande $NUEMRO</h1>
+<div class="container d-flex justify-content-center mt-100">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">$LEGUME</h4>
+            </div> <!-- Modal body -->
+            <div class="modal-body">
+                <div class="container">
+                    <h6>Details</h6>
+                    <div class="row">
+                        <div class="col">
+                            <img class="img-fluid" src="img/java.jpg">
+                        </div>
+
+                    </div>
+                    <h6>Details Commande</h6>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <ul type="none">
+                                <li class="left">Numero de commande:</li>
+                                <li class="left">Date de la commande:</li>
+                                <li class="left">Prix:</li>
+
+                            </ul>
+                        </div>
+                        <div class="col-xs-6">
+                            <ul class="right" type="none">
+                                <li class="right">#BBRT-3456981</li>
+                                <li class="right">19-03-2020</li>
+                                <li class="right">$690</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h6>Livraison</h6>
+                    <div class="row" style="border-bottom: none">
+                        <div class="col-xs-6">
+                            <ul type="none">
+                                <li class="left">Date de l'envoi</li>
+                                <li class="left">Statut:</li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6">
+                            <ul type="none">
+                                <li class="right">
+                                    <form>
+                                        <div class="col-md-6 mb-3">
+                                            <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
+                                        </div>
+                                    </form>
+                                </li>
+                                <li class="right">$ENROUTE</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div> <!-- Modal footer -->
+        </div>
+    </div>
+</div>
+</div>
+#end
