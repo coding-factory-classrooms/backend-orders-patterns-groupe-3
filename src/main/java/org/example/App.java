@@ -34,8 +34,17 @@ public class App {
             System.out.println("Article : " + article.getName());
         }
 
-        Spark.get("/", (req, res) -> {
+        Spark.get("/panier", (req, res) -> {
             return Template.render("clientBasket.html", new HashMap<>());
+        });
+        Spark.get("/commande-client", (req, res) -> {
+            return Template.render("ordered.html", new HashMap<>());
+        });
+        Spark.get("/vente", (req, res) -> {
+            return Template.render("saleList.html", new HashMap<>());
+        });
+        Spark.get("/shop", (req, res) -> {
+            return Template.render("shop.html", new HashMap<>());
         });
     }
 
