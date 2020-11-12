@@ -1,6 +1,7 @@
 package org.example.models;
 
 public class Customer {
+    private int id;
     private String firstName;
     private String lastName;
     private String address;
@@ -8,8 +9,13 @@ public class Customer {
     private String city;
 
     public Customer(String firstName, String lastName) {
+        this.id = Company.customers.size() + 1;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -50,5 +56,13 @@ public class Customer {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }
