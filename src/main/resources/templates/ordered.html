@@ -1,19 +1,21 @@
 #parse("base.html")
 #@mainLayout()
-<h1>Commande $NUEMRO</h1>
+<h1>Commande $selectedOrder.id</h1>
+
+#foreach($orderLine in $selectedOrder.orderLines)
 <div class="container d-flex justify-content-center mt-100">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">$LEGUME</h4>
+                <h4 class="modal-title">$orderLine.article.name</h4>
             </div> <!-- Modal body -->
             <div class="modal-body">
                 <div class="container">
                     <h6>Details</h6>
                     <div class="row">
                         <div class="col">
-                            <img class="img-fluid" src="img/java.jpg">
+                            <img class="img-fluid" src="$orderLine.article.picture">
                         </div>
 
                     </div>
@@ -29,9 +31,15 @@
                         </div>
                         <div class="col-xs-6">
                             <ul class="right" type="none">
-                                <li class="right">#BBRT-3456981</li>
-                                <li class="right">19-03-2020</li>
-                                <li class="right">$690</li>
+                                <li class="right">
+                                    $selectedOrder.id
+                                </li>
+                                <li class="right">
+                                    $selectedOrder.creationDate
+                                </li>
+                                <li class="right">
+                                    $orderLine.price
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -52,7 +60,7 @@
                                         </div>
                                     </form>
                                 </li>
-                                <li class="right">$ENROUTE</li>
+                                <li class="right">$selectedOrder.status</li>
                             </ul>
                         </div>
 
@@ -62,5 +70,8 @@
         </div>
     </div>
 </div>
+
+#end
+
 </div>
 #end

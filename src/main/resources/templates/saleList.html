@@ -14,22 +14,24 @@
     </tr>
     </thead>
     <tbody>
+    #foreach( $order in $orders )
     <tr>
-        <th scope="row"> <a href="/commande-client"> 1</a></th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Otto</td>
+        <th scope="row">
+            <a href="/order/$order.id"> $order.id</a>
+        </th>
+        <td>$order.customer.lastName</td>
+        <td>$order.customer.firstName</td>
+        <td>-</td>
+        <td>$order.status</td>
         <td>
             <select class="form-control" id="exampleFormControlSelect1">
-                <option>NEW</option>
-                <option>PREPARATION</option>
-                <option>ATTENTE DU LIVREUR</option>
-                <option>EN LIVRAISON</option>
-                <option>ANNULÉ</option>
+                #foreach($status in $statusesList)
+                    <option>$status</option>
+                #end
             </select>
         </td>
     </tr>
+    #end
     </tbody>
 </table>
 #end
