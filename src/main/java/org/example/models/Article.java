@@ -1,13 +1,22 @@
 package org.example.models;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Article {
+    private int id;
     private String name;
+    private String description;
     private String massUnit;
     private String picture;
-    private String price;
+    private float price;
 
     public Article(String name) {
+        this.id = Catalog.catalog.size() + 1;
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -26,11 +35,27 @@ public class Article {
         this.picture = picture;
     }
 
-    public String getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(float price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getMassUnit() {
+        return massUnit;
+    }
+
+    public void setMassUnit(String massUnit) {
+        this.massUnit = massUnit;
     }
 }

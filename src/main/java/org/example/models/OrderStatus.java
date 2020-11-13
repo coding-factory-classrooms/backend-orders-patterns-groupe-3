@@ -1,7 +1,9 @@
 package org.example.models;
 
 public enum OrderStatus {
+    NOUVEAU,
     EN_PREPARATION,
-    PRET,
-    LIVRE
+    EN_ATTENTE_DU_LIVREUR,
+    EN_LIVRAISON,
+    ANNULE
 }
