@@ -4,5 +4,5 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Catalog {
-    public static List<Article> catalog = new ArrayList<>();;
+    public static List<Article> catalog = new ArrayList<>();
 }

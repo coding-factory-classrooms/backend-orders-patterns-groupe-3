@@ -1,5 +1,7 @@
 package org.example.models;
 
+import org.example.models.memento.Originator;
+
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +20,7 @@ public class Order {
         this.creationDate = new Date();
         this.orderLines = orderLines;
         this.customer = customer;
-        this.status = OrderStatus.EN_PREPARATION.toString();
+        this.status = OrderStatus.NOUVEAU.toString();
     }
 
     public int getId() {
@@ -87,5 +89,31 @@ public class Order {
         return getTotalHT() + (getTotalHT() * (VATRate / 100));
     }
 
-    
+    public String getState() {
+        return status;
+    }
+
+    public Memento saveToMemento() {
+        System.out.println("Originator: sauvegarde dans le memento.");
+        return new Order.Memento(this.status);
+    }
+
+
+    public void restoreFromMemento(Memento memento) {
+        this.status = memento.getSavedStatus();
+        System.out.println("Originator: State after restoring from Memento: " + this.status);
+    }
+
+    public static class Memento {
+        private final String status;
+
+        public Memento(String statusToSave) {
+            status = statusToSave;
+        }
+
+        // accessible by outer class only
+        private String getSavedStatus() {
+            return status;
+        }
+    }
 }

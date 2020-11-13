@@ -7,7 +7,6 @@ import org.example.core.Template;
 import org.example.middlewares.LoggerMiddleware;
 import org.example.models.*;
 import org.example.models.memento.Caretaker;
-import org.example.models.memento.Originator;
 import spark.CustomErrorPages;
 import spark.Spark;
 
@@ -58,8 +57,6 @@ public class App {
 
     static void test_classes() {
         Caretaker caretaker = new Caretaker();
-
-        Originator originator = new Originator();
 
         Customer c1 = new Customer("AIT MEDDOUR", "Latamen");
         Customer c2 = new Customer("FENEA", "Robin");
@@ -119,25 +116,20 @@ public class App {
         Order order2 = new Order(l2, c2);
         Company.orders.add(order2);
 
+        List<Order.Memento> savedStates = new ArrayList<Order.Memento>();
 
-        originator.set(cart);
         cart.setStatus(OrderStatus.EN_ATTENTE_DU_LIVREUR.toString());
 
-        originator.set(cart);
-        caretaker.addMemento(originator.saveToMemento());
-
         cart.setStatus(OrderStatus.EN_PREPARATION.toString());
-        caretaker.addMemento( originator.saveToMemento());
+        savedStates.add(cart.saveToMemento());
 
         cart.setStatus(OrderStatus.EN_LIVRAISON.toString());
-        originator.set(cart);
+        savedStates.add(cart.saveToMemento());
 
-        Order retrievedCart = (Order) originator.restoreFromMemento(caretaker.getMemento(1));
-        if(retrievedCart != null) {
-            System.out.println(retrievedCart.getStatus());
-        }
+        cart.setStatus(OrderStatus.ANNULE.toString());
+        cart.restoreFromMemento(savedStates.get(1));
 
-        System.out.println("nombre d items enregistres : " + caretaker.getSavedStates().size() + " ");
+        System.out.println("nombre d items enregistres : " + savedStates.size() + " ");
 
         DateFormat shortDateFormat = DateFormat.getDateTimeInstance(
                 DateFormat.SHORT,
